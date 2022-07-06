@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 export const Pagination = ({countriesPerPage, totalCountries, paginate, setPages, pages }) => {
     const pageNumbers = []
 
@@ -5,20 +7,14 @@ export const Pagination = ({countriesPerPage, totalCountries, paginate, setPages
         pageNumbers.push(i);
         setPages(i);
     }
-
-    const handlePaginate = (evt, number) => {
-        evt.preventDefault();
-
-        paginate(number)
-    }
-
+    
     return (
         <div>
             <ul className="pagination">
                 {
                     pageNumbers.map(number => (
                         <li className="page-item" key={number}>
-                            <a href="!#" className="page-link" onClick={evt => handlePaginate(number, evt)}>{number}</a>
+                            <Link to="#" className="page-link" onClick={() => paginate(number)}>{number}</Link>
                         </li>
                     ))
                 }
